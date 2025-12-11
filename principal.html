@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Guia de uso de desarrollo</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+ <div class="topbar-inner">
+    <h1>Guía Completa de Desarrollo Móvil</h1>
+  </div>
+</header>
+
+<main class="content-long">
+  <section class="hero">
+    <h2>Guia de uso de desarrolo movil</h2>
+  </section>
+
+  <section class="card">
+    <h2>Sistemas Operativos Móviles</h2>
+    <p>Android: arquitectura Linux con runtime ART. iOS: kernel XNU, ecosistema cerrado. Otros: HarmonyOS, KaiOS.</p>
+    <h3>Componentes centrales</h3>
+    <ul>
+      <li>Kernel y drivers</li>
+      <li>Gestión de memoria</li>
+      <li>Gestión de procesos y hilos</li>
+      <li>Gestión de permisos</li>
+      <li>Servicios de sistema (notificaciones, sensores, ubicaciones)</li>
+    </ul>
+    <img src="so.png">
+  </section>
+
+  <section class="card">
+    <h2>Tipos de Apps</h2>
+    <h3>Nativas</h3>
+    <p>Compiladas para la plataforma. Ventajas: rendimiento y acceso a APIs nativas. Lenguajes: Kotlin/Java, Swift/Objective-C.</p>
+    <h3>Híbridas / Multiplataforma</h3>
+    <p>Usan un contenedor nativo para ejecutar web code o código cross-platform. Ejemplos: Ionic, Cordova, Capacitor, React Native, Flutter.</p>
+    <h3>Progressive Web Apps (PWA)</h3>
+    <p>Aplicaciones web que se comportan como apps instalables mediante manifest y service workers.</p>
+    <img src="apps.png">
+  </section>
+
+  <section class="card">
+    <h2>Hardware Móvil</h2>
+    <ul>
+      <li>SoC: CPU (ARM), GPU</li>
+      <li>RAM y almacenamiento flash</li>
+      <li>Batería y gestión energética</li>
+      <li>Sensores: acelerómetro, giroscopio, magnetómetro, GPS, proximidad, luz ambiental, barómetro, fingerprint</li>
+      <li>Conectividad: Wi-Fi, Bluetooth, NFC, LTE/5G</li>
+    </ul>
+    <img src="hard.png">
+  </section>
+
+  <section class="card">
+    <h2>Lenguajes y Entornos</h2>
+    <p>Kotlin/Java (Android), Swift (iOS), Dart (Flutter), JavaScript/TypeScript (Ionic, React Native). Entornos: Android Studio, Xcode, VS Code.</p>
+    <img src="ento.png">
+  </section>
+
+  <section class="card">
+    <h2>Diseño UI y Guías de Estilo</h2>
+    <p>Material Design y Human Interface Guidelines. Principios: jerarquía visual, accesibilidad, consistencia, feedback claro, tamaño de hit target y adaptabilidad a diferentes pantallas.</p>
+  <img src="ui.png">
+  </section>
+
+  <section class="card">
+    <h2>Arquitecturas y Patrones</h2>
+    <p>MVC, MVP, MVVM, Clean Architecture. Separar capas: presentación, dominio y datos. Pruebas unitarias, integraciones y pruebas de UI.</p>
+  </section>
+
+  <section class="card">
+    <h2>Control de Versiones</h2>
+    <p>Git: commits atómicos, ramas (feature, develop, release), Pull Requests, revisión de código y tags para releases. Repositorios: GitHub, GitLab, Bitbucket.</p>
+    <img src="ver.png">
+  </section>
+
+  <section class="card">
+    <h2>Persistencia y Acceso a Datos</h2>
+    <h3>Local</h3>
+    <p>localStorage, IndexedDB, SQLite (nativo), Room (Android), CoreData (iOS).</p>
+    <h3>Remoto</h3>
+    <p>APIs REST, GraphQL, Firebase Realtime/Firestore. Estrategias: caching, sincronización, conflictos de sincronización.</p>
+  </section>
+
+  <section class="card">
+    <h2>Gestión de Sensores</h2>
+    <p>Los sensores se acceden mediante APIs expuestas por el navegador o SDK nativo. A continuación se explican los más relevantes y ejemplos de uso.</p>
+
+    <h3>Geolocalización (GPS)</h3>
+    <p>Permite obtener latitud/longitud y seguimiento. Ejemplo de uso en web: navigator.geolocation.getCurrentPosition y watchPosition.</p>
+
+    <h3>Acelerómetro y Giroscopio</h3>
+    <p>Detectan movimiento y orientación. En web existen eventos DeviceMotionEvent y DeviceOrientationEvent; también hay la Generic Sensor API cuando está disponible.</p>
+
+    <h3>Sensor de Luz y Proximidad</h3>
+    <p>Se usan para ajustar brillo o detectar proximidad durante llamadas.</p>
+
+    <h3>Gestión práctica</h3>
+    <ul>
+      <li>Solicitar permisos en tiempo de ejecución.</li>
+      <li>Normalizar valores y filtrar ruido.</li>
+      <li>Optimizar muestreo para ahorrar energía.</li>
+    </ul>
+
+    <div class="demo-block">
+      <h4>Demo rápida de sensores</h4>
+      <div class="demo-row">
+        <button id="btnGetLocation" class="small">Obtener ubicación</button>
+        <span id="geoOutput"></span>
+      </div>
+      <div class="demo-row">
+        <button id="btnStartMotion" class="small">Iniciar acelerómetro</button>
+        <button id="btnStopMotion" class="small">Detener acelerómetro</button>
+        <div id="motionOutput"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Servicios y Procesos en Segundo Plano</h2>
+    <p>Servicios permiten ejecutar tareas sin interfaz: sincronización, reproducir audio, descargar archivos, location tracking. En web se usan service workers, Background Sync y Web Push para ciertos casos.</p>
+    <h3>Buenas prácticas</h3>
+    <ul>
+      <li>Minimizar uso de CPU en background.</li>
+      <li>Usar trabajo por lotes.</li>
+      <li>Manejar fallos de red y reintentos exponenciales.</li>
+    </ul>
+    <div class="demo-block">
+      <h4>Demo: registrar permiso de notificaciones</h4>
+      <div class="demo-row">
+        <button id="btnRequestNotif" class="small">Pedir permiso de notificaciones</button>
+        <button id="btnSendNotif" class="small">Enviar notificación</button>
+        <div id="notifStatus"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Notificaciones</h2>
+    <p>Locales (generadas por la app) y push (enviadas desde servidor). Elementos: título, cuerpo, icono, acciones y datos. En web se usan Notification API y Web Push con un servidor que envía mensajes vía VAPID.</p>
+    <h3>Flujo Push (resumen)</h3>
+    <ol>
+      <li>Usuario concede permiso y se subscribe al Push Service.</li>
+      <li>Servidor almacena la suscripción y envía mensajes vía Push Service (p. ej. Firebase Cloud Messaging o un servidor propio con VAPID).</li>
+      <li>Service Worker recibe el push y muestra la notificación.</li>
+    </ol>
+    <h3>Buenas prácticas</h3>
+    <ul>
+      <li>No abusar de notificaciones</li>
+      <li>Permitir control granular en la app</li>
+      <li>Proveer deep-links en notificaciones</li>
+    </ul>
+    <img src="notificaciones.png">
+  </section>
+
+  <section class="card">
+    <h2>Ciclo de Vida de las Apps</h2>
+    <p>Estados principales: creado, activo, en pausa/background, detenido y destruido. En Android: onCreate, onStart, onResume, onPause, onStop, onDestroy. En iOS: applicationDidEnterBackground, applicationWillEnterForeground, etc.</p>
+    <h3>Consideraciones</h3>
+    <ul>
+      <li>Preservar estado</li>
+      <li>Guardar datos en onPause/onStop</li>
+      <li>Reanudar conexiones y sensores al volver a primer plano</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Conectividad</h2>
+    <p>Detectar cambios de red y adaptarse: navigator.onLine y eventos online/offline. Estrategias: modo offline-first, caché, reintentos y sincronización en background.</p>
+    <img src="con.png">
+  </section>
+
+  <section class="card">
+    <h2>APIs Nativas Relevantes</h2>
+    <ul>
+      <li>Geolocation API</li>
+      <li>DeviceMotion / DeviceOrientation</li>
+      <li>Generic Sensor API</li>
+      <li>Web Bluetooth / Web USB (soporte limitado)</li>
+      <li>Payment Request API</li>
+      <li>Camera & MediaDevices.getUserMedia</li>
+    </ul>
+    <img src="apis.png">
+  </section>
+
+  <section class="card">
+    <h2>Seguridad y Privacidad</h2>
+    <p>Principios: mínimo privilegio, encriptación en tránsito y reposo, no almacenar secretos en el cliente, revisar bibliotecas de terceros, usar HTTPS y almacenamiento seguro.</p>
+  <img src="segu.png">
+  </section>
+
+  <section class="card">
+    <h2>Empaquetado y Despliegue</h2>
+    <p>Generar APK/IPA o publicar PWA. Certificados, firmas y cumplimiento de políticas de stores (privacidad, permisos, contenido).</p>
+  </section>
+
+  <section class="card">
+    <h2>Referencias y Recursos</h2>
+    <ul>
+      <li>MDN Web Docs (PWA, Service Workers, IndexedDB)</li>
+      <li>Google Developers (Material Design, Android)</li>
+      <li>Apple Developer (Human Interface Guidelines)</li>
+      <li>Documentación de Ionic, React Native y Flutter</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Ejercicios sugeridos</h2>
+    <ol>
+      <li>Implementa un sistema de sincronización que guarde datos localmente y sincronice al reconectarse.</li>
+      <li>Crear notificaciones push con FCM y un pequeño servidor de ejemplo.</li>
+      <li>Registrar y mostrar datos de sensores para una función específica (p. ej. conteo de pasos).</li>
+    </ol>
+  </section>
+</main>
+
+<script src="principal.js"></script>
+</body>
+</html>

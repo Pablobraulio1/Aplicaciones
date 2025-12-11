@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>App Tutorial Móvil</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="centered">
+  <center><h1>App Tutorial Móvil</h1></center>
+  <section class="card auth">
+    <h2>Iniciar sesión</h2>
+    <form id="loginForm">
+      <input id="loginUser" type="text" placeholder="Usuario (Correo)" required />
+      <input id="loginPass" type="password" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="loginMsg" class="msg"></p>
+  </section>
+
+  <section class="card info">
+    <h3>Instrucciones rápidas para usuarios</h3>
+    <ul>
+      <li>Registra un usuario y luego inicia sesión.</li>
+      <li>Si no registras la sesion del nuevo usuario te saldra error</li>
+      <li>Las mayusculas del correo se toman en cuenta</li>
+    </ul>
+  </section>
+  <section class="card auth">
+    <h2>Nuevo usuario</h2>
+    <form id="registerForm">
+      <input id="regUser" type="Correo" placeholder="Correo" required />
+      <input id="regPass" type="password" placeholder="Contraseña" required />
+      <button type="submit">Registrar</button>
+    </form>
+    <p id="regMsg" class="msg"></p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
